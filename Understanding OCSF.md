@@ -312,7 +312,7 @@ The Base Event class has required, recommended, and optional attributes that app
 
 Examples of required base attributes are `class_uid`, `category_uid`, `activity_id`, `severity_id`.
 
-Examples of recommended base attributes are `timezone_offset, status_id, message.`
+Examples of recommended base attributes are `timezone_offset`, `status_id`, `message`.
 
 Examples of optional base attributes are `activity_name`, `start_time`, `end_time`, `count`, `duration`, `unmapped`.
 
