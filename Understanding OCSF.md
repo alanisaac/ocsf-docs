@@ -57,13 +57,13 @@ Appendix A and B describe the OCSF Guidelines and data types respectively.[^2]
 
 The _attribute dictionary_ of all available attributes, and their types are the building blocks of the framework.  Event classes are particular sets of attributes from the dictionary.
 
-Events in OCSF are represented by _event classes _which structure a set of attributes that attempt to describe the semantics of the event in detail.  An individual event is an instance of an event class.  Event classes have schema-unique IDs.  Individual events may have globally unique IDs.
+Events in OCSF are represented by _event classes_ which structure a set of attributes that attempt to describe the semantics of the event in detail.  An individual event is an instance of an event class.  Event classes have schema-unique IDs.  Individual events may have globally unique IDs.
 
 Each event class is grouped by category, and has a unique `category_uid` attribute value which is the category identifier.  Categories also have friendly name captions, such as System Activity, Network Activity, Findings, etc.  Event classes are grouped into categories for a number of purposes: a container for a particular event domain, documentation convenience and search, reporting, storage partitioning or access control to name a few.  
 
-_Profiles_ overlay additional related attributes into event classes and objects** **allowing for cross-category event class augmentation and filtering.  Event classes register for profiles that when optionally applied, can be mixed into event classes and objects, by a producer or mapper.  For example, System Activity event classes may also include attributes for malware detection or vulnerability information when an endpoint security product is the data source.  Network Activity event classes from a host computer may carry the device, process and user associated with the activity.  A Security Control profile or Host profile can be applied in these cases, respectively.
+_Profiles_ overlay additional related attributes into event classes and objects allowing for cross-category event class augmentation and filtering.  Event classes register for profiles that when optionally applied, can be mixed into event classes and objects, by a producer or mapper.  For example, System Activity event classes may also include attributes for malware detection or vulnerability information when an endpoint security product is the data source.  Network Activity event classes from a host computer may carry the device, process and user associated with the activity.  A Security Control profile or Host profile can be applied in these cases, respectively.
 
-Finally, _extensions_ allow the schema to be extended** **using the framework without modification of the core schema.  New attributes, objects, event classes, categories and profiles are all available to extensions.  Existing profiles can be applied to extensions, and new extension profiles can be applied to core event classes and objects as well as to other extensions.
+Finally, _extensions_ allow the schema to be extended using the framework without modification of the core schema.  New attributes, objects, event classes, categories and profiles are all available to extensions.  Existing profiles can be applied to extensions, and new extension profiles can be applied to core event classes and objects as well as to other extensions.
 
 The [schema browser](https://schema.ocsf.io) visually represents the categories, event classes, dictionary, data types, profiles and extensions in a navigable portal. The schema for an event class, and an event example for a class can be generated via menu options of the browser, which also serves as a validation server via the server APIs, whose documentation is also available from the browser.
 
@@ -333,7 +333,7 @@ The `raw_data` optional attribute holds the event data as received from the sour
 
 The `type_uid` required attribute is constructed by the combination of the event class of the event (`class_uid`) and its activity (`activity_id`).  It is unique across the schema hence it has a `_uid` suffix.  The `type_uid` friendly name, `type_name`, is a way of identifying the event in a more readable and complete way.  It too is a combination of the names of the two component parts.  
 
-The value is calculated as: `class_uid` `* 100 + activity_id`.  For example:
+The value is calculated as: `class_uid * 100 + activity_id`.  For example:
 
 `type_uid` = `3001 * 100 + 1 = 300101` 
 
@@ -515,7 +515,7 @@ The event classes **may** include the Host profile and **may** include the Secur
 
 #### Identity & Access Management
 
-The event classes **would** include the Host profile, (due to actor.user), **may **include the Cloud profile, and **would not** include the Security Control profile.
+The event classes **would** include the Host profile, (due to actor.user), **may** include the Cloud profile, and **would not** include the Security Control profile.
 
 
 ### Personas and Profiles
