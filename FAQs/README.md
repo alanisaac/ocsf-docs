@@ -1,7 +1,7 @@
 # Frequently Asked Questions
 
 ## What is OCSF?
-Open Cybersecurity Schema Framework (OSCF)
+Open Cybersecurity Schema Framework (OCSF)
 is an open-source effort to create a common schema
 for security events across the cybersecurity ecosystem.
 
