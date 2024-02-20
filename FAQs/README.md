@@ -95,7 +95,7 @@ For more info on OpenC2, see
 [what text here?]
 
 See
-[Sigma Taxomomy](https://github.com/SigmaHQ/sigma/wiki/Taxonomy)
+[Sigma Taxonomy](https://github.com/SigmaHQ/sigma/wiki/Taxonomy)
 for more info on it.
 
 ## How can I contribute to OCSF?

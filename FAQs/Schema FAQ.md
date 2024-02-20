@@ -32,7 +32,7 @@ When the `type_id` of the observable indicates that the observable's `name` attr
 
 ## When should I use a Security Finding event class?
 
-A Finding in OCSF represents the result of some type of enrichment, correlation, aggregation, analysis or other processing of one or more events or alerts, producing a derived insight.  Most security events and alerts are activity events with a dispostion (e.g. Blocked).  Findings in OCSF are not alerts, although alerts may be triggered by findings or findings might be added to an incident further downstream.
+A Finding in OCSF represents the result of some type of enrichment, correlation, aggregation, analysis or other processing of one or more events or alerts, producing a derived insight.  Most security events and alerts are activity events with a disposition (e.g. Blocked).  Findings in OCSF are not alerts, although alerts may be triggered by findings or findings might be added to an incident further downstream.
 
 For example, an email security product may determine that a user has been phished or an email attachment is malicious.  It would send an email activity event (from its standpoint an alert) containing the user and sender, supplemented by the Malware profile with a disposition of Blocked, and information about the Malware, to its management console which in turn sends it to a SIEM.  
 
@@ -48,7 +48,7 @@ When an event producer or mapper emits multiple events that have some grouping c
 
 A simple example would be a vulnerability scanner that emits events at the start of a scan of a system, at the end of the scan, and separate events for each vulnerability discovered.  If these are separate events, they would all have their `metadata.correlation_uid` set to the same value.
 
-It is possible for an intermediary system to determine the grouping characcteristic as well, populating the attribute after collection of the events, although when OCSF events are  immutable a copy of the original events would be made with added correlation information.  See the next question.
+It is possible for an intermediary system to determine the grouping characteristic as well, populating the attribute after collection of the events, although when OCSF events are  immutable a copy of the original events would be made with added correlation information.  See the next question.
 
 ---
 
@@ -115,11 +115,11 @@ HTTP Activity is information focused on the network protocol, and not the gating
 ## Can you explain Profiles to me?
 Profiles in OCSF are a way to uniformly add a set of attributes to one or more event classes or objects.  Event classes provide the basic structure and type of an event, while objects provide the structure of complex types. Their definitions can indicate that additional attributes may be included with an event instance via profiles specified with the class or object definition.  In effect, adding a profile or profiles to the definition gives you the permission to dynamically include those attributes.  When constructing an event, you would add an OCSF profile name to the `metadata.profiles` array to mix-in the additional attributes with the event.
 
-An event that has that profile applied is then a kind of that profile, as well as a kind of the event class.  For example, if the `Host` profile was applied to the `HTTP Activity` class to add the `actor.process` making a request, the event would be queriable either via the metadata.profiles[] as `Host` or via class_name as `HTTP Activity`.  If using `Host` other events from `System Activity` could also be returned with the same actor.
+An event that has that profile applied is then a kind of that profile, as well as a kind of the event class.  For example, if the `Host` profile was applied to the `HTTP Activity` class to add the `actor.process` making a request, the event would be queryable either via the metadata.profiles[] as `Host` or via class_name as `HTTP Activity`.  If using `Host` other events from `System Activity` could also be returned with the same actor.
 
 Not all of the attributes from the profile need be added together.  For example, a profile with attributes A, B, C can be defined within the definition of class D and object E.  Class D can include A and B, while object E can include attribute C.  You can also build in a profile, by adding the attributes of the profile directly into your class, and referencing the profile in your class definition.  In this case, as with class and object extensions, the profile defined requirements, group or description can be overridden within the definition of the class or object, although this is not recommended.  Only the attribute data type and constraints cannot be overridden.
 
 ---
 
-## Is there a simiilarity between OCSF and LDAP (and X.500)?
+## Is there a similarity between OCSF and LDAP (and X.500)?
 Yes there is, although OCSF is considerably simpler.  At a fundamental level LDAP consists of attributes and object classes, while OCSF consists of attributes and event classes.  Attributes in LDAP have syntaxes and in OCSF have data types (OCSF objects are complex data types).  An event class is similar to an LDAP structural object class; it defines the basic structure of an event, as the LDAP object class defines the structure of an entry.  Like LDAP, an OCSF event class can be constructed via extending a super class to inherit attributes.  And an OCSF profile is similar to an LDAP auxiliary class which can be applied to a structural object class so that an entry can mix in additional attributes, independent of structural hierarchy of the entry.
